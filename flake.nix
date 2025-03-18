@@ -1,5 +1,5 @@
 {
-  description = "my minimal flake";
+  description = "zeked's configs";
   inputs = {
     # Where we get most of our software. Giant mono repo with recipes
     # called derivations that say how to build software.

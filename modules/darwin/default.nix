@@ -1,12 +1,14 @@
 { pkgs, ... }: {
-  # here go the darwin preferences and config items
+  # nix-darwin manages system-level programs and configuration
   users.users.zedang.home = "/Users/zedang";
   programs.zsh.enable = true;
   ids.gids.nixbld = 350;
   environment = {
     shells = with pkgs; [ bash zsh ];
-    # loginShell = pkgs.zsh;
-    systemPackages = [ pkgs.coreutils ];
+    systemPackages = [ 
+      pkgs.coreutils
+      pkgs.nixfmt-rfc-style
+    ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
@@ -15,9 +17,6 @@
   '';
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
-  # fonts.fontDir.enable = true; # DANGER
-  # fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "Meslo" ]; }) ];
-  # services.nix-daemon.enable = true;
   system.defaults = {
     finder.AppleShowAllExtensions = true;
     finder._FXShowPosixPathInTitle = true;

@@ -1,14 +1,15 @@
 { pkgs, pwnvim, ... }: {
+  # home-manager manages user-level programs and configuration
   home.homeDirectory = "/Users/zedang";
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "24.11";
   # specify my home-manager configs
   home.packages = with pkgs; [
-    ripgrep
-    fd
-    curl
-    less
-    pwnvim.packages."aarch64-darwin".default
+    ripgrep # for searching files 
+    fd # for finding files
+    curl # for downloading files
+    less # for pager
+    pwnvim.packages."aarch64-darwin".default # for vim
   ];
   home.sessionVariables = {
     PAGER = "less";
@@ -39,7 +40,7 @@
   programs.alacritty = {
     enable = true;
     settings.font.normal.family = "MesloLGS Nerd Font Mono";
-    settings.font.size = 16;
+    settings.font.size = 14;
   };
   home.file.".inputrc".source = ./dotfiles/inputrc;
 }
