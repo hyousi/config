@@ -30,10 +30,15 @@
   system.stateVersion = 4;
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = false;
+      upgrade = false;
+      cleanup = "uninstall";
+    };
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    casks = [ "raycast" "amethyst" ];
+    casks = [ "raycast" ];
     taps = [ "fujiapple852/trippy" ];
     brews = [ "trippy" ];
   };

@@ -39,5 +39,5 @@ nix build .#darwinConfigurations.zed-mini.system
 
 4. apply updates after changing configs
 ```bash
-darwin-rebuild switch --flake ~/config
+nixswitch
 ```
