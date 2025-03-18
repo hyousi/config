@@ -35,6 +35,11 @@
     nixswitch = "darwin-rebuild switch --flake ~/config/.#";
     nixup = "pushd ~/config; nix flake update; nixswitch; popd";
   };
+  programs.zsh.oh-my-zsh = {
+    enable = true;
+    plugins = [ "git" ];
+    theme = "robbyrussell";
+  };
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
   programs.alacritty = {
