@@ -34,23 +34,28 @@
   # A modern alternative to ls
   programs.eza.enable = true;
   programs.git.enable = true;
+  programs.git-credential-oauth.enable = true;
   programs.zsh = {
     enable = true;
     initExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
     enableCompletion = true;
+    # enable zsh-autosuggestions-plugin
     autosuggestion.enable = true;
+    # enable zsh-syntax-highlighting-plugin
     syntaxHighlighting.enable = true;
     shellAliases = {
-      ls = "ls --color=auto -F";
+      cat = "bat";
+      ls = "eza -F";
       nixswitch = "darwin-rebuild switch --flake ~/config/.#";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
-      theme = "robbyrussell";
+      plugins = [ "git" "kubectl" "sudo" ];
+      # Theme is controlled by starship
+      # theme = "robbyrussell";
     };
   };
   programs.starship = {
