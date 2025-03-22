@@ -47,7 +47,14 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       cat = "bat";
-      ls = "eza -F";
+      ls = "eza --oneline";
+      lsa = "eza --all --oneline";
+      lsl = "eza --long --header --total-size --time-style=long-iso";
+      lsal = "eza --all --long --header --total-size --time-style=long-iso";
+      lss = "eza --long --sort=size";
+      lsd = "eza --only-dirs --oneline";
+      lsf = "eza --only-files --oneline";
+      lsab = "eza --absolute=on --oneline";
       nixswitch = "darwin-rebuild switch --flake ~/config/.#";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
     };
