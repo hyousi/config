@@ -15,8 +15,11 @@
 
     # Tricked out nvim
     pwnvim.url = "github:zmre/pwnvim";
+
+    # Devbox
+    devbox.url = "github:jetify-com/devbox/latest";
   };
-  outputs = inputs@{ nixpkgs, home-manager, darwin, pwnvim, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, darwin, pwnvim, devbox, ... }: {
     darwinConfigurations.zed-mini = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       pkgs = import nixpkgs { system = "aarch64-darwin"; };
@@ -27,7 +30,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit pwnvim; };
+            extraSpecialArgs = { inherit pwnvim devbox; };
             users.zedang = import ./modules/home-manager;
           };
         }

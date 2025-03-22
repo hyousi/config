@@ -1,4 +1,4 @@
-{ pkgs, pwnvim, ... }: {
+{ pkgs, pwnvim, devbox, ... }: {
   # home-manager manages user-level programs and configuration
   home.homeDirectory = "/Users/zedang";
   # Don't change this when you change package input. Leave it alone.
@@ -10,6 +10,7 @@
     curl # for downloading files
     less # for pager
     pwnvim.packages."aarch64-darwin".default # for vim
+    devbox.packages."aarch64-darwin".default # for devbox
   ];
   home.sessionVariables = {
     PAGER = "less";
