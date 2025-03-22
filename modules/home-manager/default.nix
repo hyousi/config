@@ -23,32 +23,40 @@
     CLICLOLOR = 1;
     EDITOR = "nvim";
   };
-  programs.bat.enable = true;
-  programs.bat.config.theme = "TwoDark";
-  programs.fzf.enable = true;
-  programs.fzf.enableZshIntegration = true;
+  programs.bat = {
+    enable = true;
+    config.theme = "TwoDark";
+  };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   # A modern alternative to ls
   programs.eza.enable = true;
   programs.git.enable = true;
-  programs.zsh.enable = true;
-  programs.zsh.initExtra = ''
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  '';
-  programs.zsh.enableCompletion = true;
-  programs.zsh.autosuggestion.enable = true;
-  programs.zsh.syntaxHighlighting.enable = true;
-  programs.zsh.shellAliases = {
-    ls = "ls --color=auto -F";
-    nixswitch = "darwin-rebuild switch --flake ~/config/.#";
-    nixup = "pushd ~/config; nix flake update; nixswitch; popd";
-  };
-  programs.zsh.oh-my-zsh = {
+  programs.zsh = {
     enable = true;
-    plugins = [ "git" ];
-    theme = "robbyrussell";
+    initExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+      ls = "ls --color=auto -F";
+      nixswitch = "darwin-rebuild switch --flake ~/config/.#";
+      nixup = "pushd ~/config; nix flake update; nixswitch; popd";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
   };
-  programs.starship.enable = true;
-  programs.starship.enableZshIntegration = true;
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.alacritty = {
     enable = true;
     settings.font.normal.family = "MesloLGS Nerd Font Mono";
