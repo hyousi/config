@@ -20,6 +20,11 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.meslo-lg
+    ];
+  };
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
   system.defaults = {

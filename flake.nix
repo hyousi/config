@@ -21,6 +21,7 @@
 
     # Nix lsp
     nixd.url = "github:nix-community/nixd";
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
   };
   outputs =
     {
@@ -29,12 +30,13 @@
       darwin,
       pwnvim,
       devbox,
+      alacritty-theme,
       ...
     }:
     {
       darwinConfigurations.zed-mini = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        pkgs = import nixpkgs { system = "aarch64-darwin"; };
+        pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ alacritty-theme.overlays.default ]; };
         modules = [
           ./modules/darwin
           home-manager.darwinModules.home-manager

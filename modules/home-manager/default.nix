@@ -64,8 +64,11 @@
   };
   programs.alacritty = {
     enable = true;
-    settings.font.normal.family = "MesloLGS Nerd Font Mono";
-    settings.font.size = 14;
+    settings = {
+      font.normal.family = "MesloLGS Nerd Font Mono";
+      font.size = 14;
+      general.import = [ pkgs.alacritty-theme.catppuccin_mocha ];
+    };
   };
   home.file.".inputrc".source = ./dotfiles/inputrc;
 }
