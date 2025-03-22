@@ -37,7 +37,12 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    casks = [ "raycast" ];
+    casks = [ 
+      "betterdisplay"
+      "cleanshot"
+      "jordanbaird-ice"
+      "raycast"
+    ];
     taps = [ "fujiapple852/trippy" ];
     brews = [ "trippy" ];
   };
