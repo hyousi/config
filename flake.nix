@@ -18,23 +18,35 @@
 
     # Devbox
     devbox.url = "github:jetify-com/devbox/latest";
+
+    # Nix lsp
+    nixd.url = "github:nix-community/nixd";
   };
-  outputs = inputs@{ nixpkgs, home-manager, darwin, pwnvim, devbox, ... }: {
-    darwinConfigurations.zed-mini = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      pkgs = import nixpkgs { system = "aarch64-darwin"; };
-      modules = [
-        ./modules/darwin
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit pwnvim devbox; };
-            users.zedang = import ./modules/home-manager;
-          };
-        }
-      ];
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      darwin,
+      pwnvim,
+      devbox,
+      ...
+    }:
+    {
+      darwinConfigurations.zed-mini = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        pkgs = import nixpkgs { system = "aarch64-darwin"; };
+        modules = [
+          ./modules/darwin
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit pwnvim devbox; };
+              users.zedang = import ./modules/home-manager;
+            };
+          }
+        ];
+      };
     };
-  };
 }

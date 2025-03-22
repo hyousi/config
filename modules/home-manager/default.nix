@@ -1,11 +1,17 @@
-{ pkgs, pwnvim, devbox, ... }: {
+{
+  pkgs,
+  pwnvim,
+  devbox,
+  ...
+}:
+{
   # home-manager manages user-level programs and configuration
   home.homeDirectory = "/Users/zedang";
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "24.11";
   # specify my home-manager configs
   home.packages = with pkgs; [
-    ripgrep # for searching files 
+    ripgrep # for searching files
     fd # for finding files
     curl # for downloading files
     less # for pager

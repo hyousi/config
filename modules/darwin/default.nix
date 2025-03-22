@@ -1,13 +1,18 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # nix-darwin manages system-level programs and configuration
   users.users.zedang.home = "/Users/zedang";
   programs.zsh.enable = true;
   ids.gids.nixbld = 350;
   environment = {
-    shells = with pkgs; [ bash zsh ];
-    systemPackages = [ 
+    shells = with pkgs; [
+      bash
+      zsh
+    ];
+    systemPackages = [
       pkgs.coreutils
       pkgs.nixfmt-rfc-style
+      pkgs.nixd
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
@@ -37,7 +42,7 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    casks = [ 
+    casks = [
       "betterdisplay"
       "cleanshot"
       "jordanbaird-ice"
