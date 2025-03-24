@@ -52,6 +52,7 @@
       "cleanshot"
       "jordanbaird-ice"
       "raycast"
+      "orbstack"
     ];
     taps = [ "fujiapple852/trippy" ];
     brews = [ "trippy" ];
