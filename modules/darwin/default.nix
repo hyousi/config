@@ -50,9 +50,12 @@
     casks = [
       "betterdisplay"
       "cleanshot"
+      "cursor"
       "jordanbaird-ice"
       "raycast"
       "orbstack"
+      "logi-options+"
+      "yaak"
     ];
     taps = [ "fujiapple852/trippy" ];
     brews = [ "trippy" ];
