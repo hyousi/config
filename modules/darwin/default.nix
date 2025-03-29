@@ -57,7 +57,6 @@
       "logi-options+"
       "yaak"
     ];
-    taps = [ "fujiapple852/trippy" ];
     brews = [ "trippy" ];
   };
 }

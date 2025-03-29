@@ -33,7 +33,10 @@
   };
   # A modern alternative to ls
   programs.eza.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    maintenance.enable = true;
+  };
   programs.git-credential-oauth.enable = true;
   programs.zsh = {
     enable = true;
@@ -78,4 +81,5 @@
     };
   };
   home.file.".inputrc".source = ./dotfiles/inputrc;
+  home.file.".gitconfig".source = ./dotfiles/.gitconfig;
 }
