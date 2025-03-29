@@ -81,5 +81,10 @@
     };
   };
   home.file.".inputrc".source = ./dotfiles/inputrc;
-  home.file.".gitconfig".source = ./dotfiles/.gitconfig;
+
+  xdg = {
+    enable = true;
+    configFile."git/config".source = ./dotfiles/.gitconfig;
+    configFile."starship.toml".source = ./dotfiles/starship.toml;
+  };
 }
