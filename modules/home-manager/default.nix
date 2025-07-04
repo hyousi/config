@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   pwnvim,
   devbox,
   ...
@@ -27,7 +28,7 @@
 
   programs.aerospace = {
     enable = true;
-    userSettings = builtins.fromTOML (builtins.readFile ./dotfiles/aerospace.toml);
+    userSettings = lib.importTOML ./dotfiles/aerospace.toml;
   };
   
 
@@ -79,6 +80,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    settings = lib.importTOML ./dotfiles/starship.toml;
   };
   programs.alacritty = {
     enable = true;
@@ -97,6 +99,5 @@
   xdg = {
     enable = true;
     configFile."git/config".source = ./dotfiles/.gitconfig;
-    configFile."starship.toml".source = ./dotfiles/starship.toml;
   };
 }
