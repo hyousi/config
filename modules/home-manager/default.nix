@@ -6,7 +6,7 @@
 }:
 {
   # home-manager manages user-level programs and configuration
-  home.homeDirectory = "/Users/zedang";
+  home.homeDirectory = "/Users/zeked";
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "24.11";
   # specify my home-manager configs
@@ -18,11 +18,19 @@
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
   ];
+  
   home.sessionVariables = {
     PAGER = "less";
     CLICLOLOR = 1;
     EDITOR = "nvim";
   };
+
+  programs.aerospace = {
+    enable = true;
+    userSettings = builtins.fromTOML (builtins.readFile ./dotfiles/aerospace.toml);
+  };
+  
+
   programs.bat = {
     enable = true;
     config.theme = "TwoDark";
@@ -80,7 +88,11 @@
       general.import = [ pkgs.alacritty-theme.catppuccin_mocha ];
     };
   };
-  home.file.".inputrc".source = ./dotfiles/inputrc;
+
+  home.file = {
+    ".inputrc".source = ./dotfiles/inputrc;
+  };
+  
 
   xdg = {
     enable = true;

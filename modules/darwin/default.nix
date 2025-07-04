@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # nix-darwin manages system-level programs and configuration
-  users.users.zedang.home = "/Users/zedang";
+  users.users.zedang.home = "/Users/zeked";
   programs.zsh.enable = true;
   ids.gids.nixbld = 350;
   environment = {

@@ -34,7 +34,7 @@
       ...
     }:
     {
-      darwinConfigurations.zed-mini = darwin.lib.darwinSystem {
+      darwinConfigurations."zedang-air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ alacritty-theme.overlays.default ]; };
         modules = [
