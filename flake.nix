@@ -36,7 +36,10 @@
     {
       darwinConfigurations."zedang-air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        pkgs = import nixpkgs { system = "aarch64-darwin"; overlays = [ alacritty-theme.overlays.default ]; };
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [ alacritty-theme.overlays.default ];
+        };
         modules = [
           ./modules/darwin
           home-manager.darwinModules.home-manager

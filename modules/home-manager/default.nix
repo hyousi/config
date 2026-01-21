@@ -3,6 +3,7 @@
   lib,
   pwnvim,
   devbox,
+  config,
   ...
 }:
 {
@@ -14,12 +15,15 @@
   home.packages = with pkgs; [
     ripgrep # for searching files
     fd # for finding files
+    hyperfine
     curl # for downloading files
     less # for pager
+    git-credential-manager # Git credential helper (needs sandbox disabled on macOS)
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
+    dotnet-sdk_8
   ];
-  
+
   home.sessionVariables = {
     PAGER = "less";
     CLICLOLOR = 1;
@@ -28,9 +32,8 @@
 
   programs.aerospace = {
     enable = true;
-    userSettings = lib.importTOML ./dotfiles/aerospace.toml;
+    settings = lib.importTOML ./dotfiles/aerospace.toml;
   };
-  
 
   programs.bat = {
     enable = true;
@@ -49,6 +52,7 @@
   programs.git-credential-oauth.enable = true;
   programs.zsh = {
     enable = true;
+    dotDir = ".config/zsh";
     initExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
@@ -67,12 +71,16 @@
       lsd = "eza --only-dirs --oneline";
       lsf = "eza --only-files --oneline";
       lsab = "eza --absolute=on --oneline";
-      nixswitch = "darwin-rebuild switch --flake ~/config/.#";
+      nixswitch = "sudo darwin-rebuild switch --flake ~/config/.#";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "kubectl" "sudo" ];
+      plugins = [
+        "git"
+        "kubectl"
+        "sudo"
+      ];
       # Theme is controlled by starship
       # theme = "robbyrussell";
     };
@@ -94,10 +102,14 @@
   home.file = {
     ".inputrc".source = ./dotfiles/inputrc;
   };
-  
 
   xdg = {
     enable = true;
     configFile."git/config".source = ./dotfiles/.gitconfig;
+    configFile."ghostty/config".text = ''
+      font-family = "MesloLGS Nerd Font Mono"
+      font-size = 14
+      theme = catppuccin-frappe
+    '';
   };
 }

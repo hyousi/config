@@ -1,12 +1,12 @@
+[user]
+  name = hyousi
+  email = t0iiz@outlook.com
+
 [includeIf "gitdir:~/Developer/work/"]
   path = ~/Developer/work/.gitconfig
 
 [includeIf "gitdir:~/Developer/hobby/"]
   path = ~/Developer/hobby/.gitconfig
-
-[user]
-  name = hyousi
-  email = t0iiz@outlook.com
 
 [column]
   ui = auto
