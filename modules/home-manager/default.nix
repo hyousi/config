@@ -52,8 +52,8 @@
   programs.git-credential-oauth.enable = true;
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
-    initExtra = ''
+    dotDir = "${config.home.homeDirectory}/.config/zsh";
+    initContent = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
     enableCompletion = true;

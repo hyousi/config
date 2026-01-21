@@ -12,7 +12,7 @@
     ];
     systemPackages = [
       pkgs.coreutils
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
       pkgs.nixd
     ];
     systemPath = [ "/opt/homebrew/bin" ];
