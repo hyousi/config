@@ -43,8 +43,8 @@
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = false;
-      upgrade = false;
+      autoUpdate = true;
+      upgrade = true;
       cleanup = "uninstall";
     };
     caskArgs.no_quarantine = true;
@@ -63,6 +63,7 @@
       "mono-mdk"
       "ghostty"
       "obsidian"
+      "claude-code"
     ];
     brews = [
       "trippy"

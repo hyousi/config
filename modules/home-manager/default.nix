@@ -55,6 +55,7 @@
     dotDir = "${config.home.homeDirectory}/.config/zsh";
     initContent = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
+      eval "$(devbox global shellenv)"
     '';
     enableCompletion = true;
     # enable zsh-autosuggestions-plugin
@@ -109,7 +110,6 @@
     configFile."ghostty/config".text = ''
       font-family = "MesloLGS Nerd Font Mono"
       font-size = 14
-      theme = catppuccin-frappe
     '';
   };
 }
