@@ -22,6 +22,7 @@
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
     dotnet-sdk_8
+    nodejs # current active LTS
   ];
 
   home.sessionVariables = {
