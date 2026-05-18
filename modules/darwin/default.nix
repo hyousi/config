@@ -18,10 +18,20 @@
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    sandbox = false
-  '';
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    sandbox = false;
+    substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://cache.nixos.org/"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWm3Jxg4apZq6KXZq7o6hZb6sTZ8="
+    ];
+  };
   fonts = {
     packages = with pkgs; [
       nerd-fonts.meslo-lg
