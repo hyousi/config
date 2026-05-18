@@ -45,7 +45,6 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "uninstall";
     };
     caskArgs.no_quarantine = true;
     global.brewfile = true;
@@ -63,10 +62,10 @@
       "mono-mdk"
       "ghostty"
       "obsidian"
-      "claude-code"
     ];
     brews = [
       "trippy"
+      "cloudflared"
     ];
   };
 }
