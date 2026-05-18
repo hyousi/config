@@ -53,10 +53,11 @@
   programs.zsh = {
     enable = true;
     dotDir = "${config.home.homeDirectory}/.config/zsh";
-    initContent = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-      eval "$(devbox global shellenv)"
-    '';
+    initContent = lib.concatStringsSep "\n" [
+      (builtins.readFile ./dotfiles/zsh/env.zsh)
+      (builtins.readFile ./dotfiles/zsh/sudo-widget.zsh)
+      (builtins.readFile ./dotfiles/zsh/kubectl.zsh)
+    ];
     enableCompletion = true;
     # enable zsh-autosuggestions-plugin
     autosuggestion.enable = true;
@@ -74,16 +75,12 @@
       lsab = "eza --absolute=on --oneline";
       nixswitch = "sudo darwin-rebuild switch --flake ~/config/.#";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "kubectl"
-        "sudo"
-      ];
-      # Theme is controlled by starship
-      # theme = "robbyrussell";
+      # git
+      gst = "git status";
+      gco = "git checkout";
+      gp = "git push";
+      # kubectl
+      k = "kubectl";
     };
   };
   programs.starship = {
