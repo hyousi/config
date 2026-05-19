@@ -1,43 +1,69 @@
-# Companion to Walkthrough of Nix Install and Setup on MacOS
+# zeked's nix-darwin config
 
-This is a simple Nix MacOS flake and shows the progress and final state of the config used in the video [Walkthrough of Nix Install and Setup on MacOS](https://youtu.be/LE5JR4JcvMg).
+Personal declarative configuration for macOS (Apple Silicon), built on
+[Nix](https://nixos.org/), [nix-darwin](https://github.com/nix-darwin/nix-darwin),
+and [home-manager](https://github.com/nix-community/home-manager).
 
-Take a look at earlier commits to see what a really basic single file flake looks like with nix-darwin and home-manager.
+System hostname: `zedang-air`.
 
-## Video description
+## Layout
 
-This is a live walkthrough of an install of Nix on a fresh MacOS system and a tutorial showing how to make a declarative config that will meet all of your needs on MacOS.
-
-Steps:
-
-1. Install of nix
-2. Creation of basic flake
-3. Addition of nix-darwin and home-manager
-4. Initial bootstrap of config
-5. Config enhancements showing linked config files and homebrew control
-6. Demonstration of adding a remote flake as a package
-7. Refactor of single nix file into multiple files and other simplifications
-
-Nix example code:
-
-* [Initial working flake](https://github.com/zmre/mac-nix-simple-example/blob/2c6465d9df0f42e279681e2c30eaf8ed998940be/flake.nix)
-* [Embellished flake](https://github.com/zmre/mac-nix-simple-example/blob/502fbabcaaaf160081926498641a042995de19c2/flake.nix)
-* [Final refactored version](https://github.com/zmre/mac-nix-simple-example)
-
-
-1. Build darwin config
-```bash
-nix build .#darwinConfigurations.zed-mini.system
+```
+flake.nix                       # inputs + darwinConfigurations entry
+modules/
+  darwin/default.nix            # system-level: defaults, fonts, homebrew (casks/brews)
+  home-manager/
+    default.nix                 # user-level: packages, zsh, git, starship, alacritty, ...
+    dotfiles/                   # config files imported via importTOML / readFile / source
+      aerospace.toml
+      starship.toml
+      zsh/                      # split-out zsh init snippets (sourced into .zshrc)
+      ...
 ```
 
-2. Apply config to OS
-```bash
-./result/sw/bin/darwin-rebuild switch --flake .
-```
+Channels are pinned to the `25.05` stable release across `nixpkgs`,
+`home-manager`, and `nix-darwin`. Bump all three together when upgrading.
 
-3. reboot macOS
+## Bootstrap on a fresh machine
 
-4. apply updates after changing configs
-```bash
-nixswitch
-```
+1. Install Nix (Determinate Systems installer recommended):
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+2. Clone this repo to `~/config`:
+
+   ```bash
+   git clone <this-repo> ~/config
+   ```
+
+3. Build and activate the darwin configuration the first time:
+
+   ```bash
+   nix --extra-experimental-features 'nix-command flakes' \
+     run nix-darwin -- switch --flake ~/config#zedang-air
+   ```
+
+4. Open a new shell. The `nixswitch` and `nixup` aliases are now available.
+
+## Day-to-day
+
+| Goal | Command |
+| --- | --- |
+| Apply config changes | `nixswitch` |
+| Update inputs + apply | `nixup` |
+| Format nix files | `nixfmt **/*.nix` |
+| Free old generations | `nix-collect-garbage -d` |
+
+`nixswitch` expands to `sudo darwin-rebuild switch --flake ~/config/.#`.
+
+## Notes
+
+- New files must be `git add`-ed before `nixswitch` — flakes only see
+  git-tracked files, so untracked files cause "No such file" build errors.
+- Homebrew is managed declaratively under `homebrew = { ... }` in
+  `modules/darwin/default.nix`. Don't `brew install` ad-hoc; add to `casks`
+  or `brews` and `nixswitch`.
+- Per-project dev environments use `devbox` (`devbox.json` in the project).
+  No `devbox global` state — global tools belong in `home.packages`.

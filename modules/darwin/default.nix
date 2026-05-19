@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # nix-darwin manages system-level programs and configuration
   users.users.zedang.home = "/Users/zeked";
@@ -12,7 +12,7 @@
     ];
     systemPackages = [
       pkgs.coreutils
-      pkgs.nixfmt
+      pkgs.nixfmt-classic
       pkgs.nixd
     ];
     systemPath = [ "/opt/homebrew/bin" ];
@@ -24,12 +24,12 @@
       "flakes"
     ];
     sandbox = false;
-    substituters = [
+    substituters = lib.mkForce [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
     ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWm3Jxg4apZq6KXZq7o6hZb6sTZ8="
+    trusted-public-keys = lib.mkForce [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
   fonts = {

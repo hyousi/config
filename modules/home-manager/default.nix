@@ -18,10 +18,8 @@
     hyperfine
     curl # for downloading files
     less # for pager
-    git-credential-manager # Git credential helper (needs sandbox disabled on macOS)
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
-    dotnet-sdk_8
     nodejs # current active LTS
   ];
 
@@ -33,7 +31,7 @@
 
   programs.aerospace = {
     enable = true;
-    settings = lib.importTOML ./dotfiles/aerospace.toml;
+    userSettings = lib.importTOML ./dotfiles/aerospace.toml;
   };
 
   programs.bat = {
