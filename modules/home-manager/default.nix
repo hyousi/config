@@ -50,7 +50,7 @@
   programs.git-credential-oauth.enable = true;
   programs.zsh = {
     enable = true;
-    dotDir = "${config.home.homeDirectory}/.config/zsh";
+    dotDir = ".config/zsh";
     initContent = lib.concatStringsSep "\n" [
       (builtins.readFile ./dotfiles/zsh/env.zsh)
       (builtins.readFile ./dotfiles/zsh/sudo-widget.zsh)
@@ -77,6 +77,14 @@
       gst = "git status";
       gco = "git checkout";
       gp = "git push";
+      gl = "git pull";
+      gpr = "git pull --rebase";
+      gpf = "git push --force-with-lease";
+      gcm = "git commit -m";
+      gca = "git commit --amend";
+      gd = "git diff";
+      gb = "git branch";
+      glog = "git log --oneline --decorate --graph";
       # kubectl
       k = "kubectl";
     };
@@ -97,6 +105,10 @@
 
   home.file = {
     ".inputrc".source = ./dotfiles/inputrc;
+    "Library/Application Support/Cursor/User/keybindings.json" = {
+      source = ./dotfiles/cursor/keybindings.json;
+      force = true;
+    };
   };
 
   xdg = {

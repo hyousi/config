@@ -1,0 +1,234 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "cmd+-",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "cmd+=",
+    "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "cmd+f",
+    "command": "workbench.action.terminal.focusFind",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+f",
+    "command": "-workbench.action.terminal.focusFind",
+    "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.selectTheme"
+  },
+  {
+    "key": "alt+cmd+z",
+    "command": "git.revertSelectedRanges"
+  },
+  {
+    "key": "cmd+k cmd+r",
+    "command": "-git.revertSelectedRanges",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "-extension.openInSpecifyBrowser"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "-java.workspace.compile"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "-gitlens.toggleCodeLens",
+    "when": "editorTextFocus && !gitlens:disabled && !gitlens:disabledToggleCodeLens && config.gitlens.keymap == 'alternate'"
+  },
+  {
+    "key": "shift+alt+b",
+    "command": "editor.action.goToTypeDefinition"
+  },
+  {
+    "key": "alt+\\",
+    "command": "workbench.action.positionPanelRight"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-workbench.action.search.toggleQueryDetails",
+    "when": "inSearchEditor || searchViewletFocus"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && (terminalProcessSupported || terminalWebExtensionContributedProfile)"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "-workbench.action.gotoSymbol"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "cmd+[",
+    "command": "-editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+]",
+    "command": "-editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+cmd+z",
+    "command": "-interactiveEditor.undoToClipboard",
+    "when": "interactiveEditorHasProvider && interactiveEditorVisible && interactiveEditorLastEditKind == 'simple'"
+  },
+  {
+    "key": "alt+cmd+k",
+    "command": "-git.pushTo",
+    "when": "!inDebugMode && !operationInProgress && !terminalFocus"
+  },
+  {
+    "key": "cmd+numpad_separator",
+    "command": "-workbench.action.openGlobalSettings"
+  },
+  {
+    "key": "cmd+,",
+    "command": "-workbench.action.openGlobalSettings"
+  },
+  {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettings"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.gotoLine"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-workbench.action.gotoLine"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-aiSettings.action.open",
+    "when": "!isSettingsPaneOpen"
+  },
+  {
+    "key": "alt+cmd+l",
+    "command": "editor.action.formatDocument.none",
+    "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument.none",
+    "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+  },
+  {
+    "key": "alt+cmd+l",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  {
+    "key": "cmd+k",
+    "command": "-git.commitAll",
+    "when": "!inDebugMode && !operationInProgress && !terminalFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+l",
+    "command": "composerMode.chat"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-composer.showBackgroundAgentHistory",
+    "when": "backgroundComposerEnabled || showBackgroundAgentHistoryAction"
+  },
+  {
+    "key": "alt+cmd+e",
+    "command": "cursor.composer.openAgentWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout != 'agent'"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.composer.openAgentWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout != 'agent'"
+  },
+  {
+    "key": "alt+cmd+e",
+    "command": "cursor.composer.openEditorWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout == 'agent'"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.composer.openEditorWindow",
+    "when": "cursor.appLayoutEnabled && cursor.appLayout == 'agent'"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "panelFocus"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "-workbench.action.toggleMaximizedPanel",
+    "when": "inDebugRepl && panelAlignment == 'center' || problemFocus && panelAlignment == 'center' || terminalFocus && panelAlignment == 'center' || focusedView == 'workbench.panel.output' && panelAlignment == 'center' || inDebugRepl && panelPosition != 'bottom' && panelPosition != 'top' || problemFocus && panelPosition != 'bottom' && panelPosition != 'top' || terminalFocus && panelPosition != 'bottom' && panelPosition != 'top' || focusedView == 'workbench.panel.output' && panelPosition != 'bottom' && panelPosition != 'top'"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-cursor.toggleAgentWindowIDEUnification",
+    "when": "cursor.agentIdeUnification.featureGate && workbenchState != 'empty'"
+  },
+  {
+    "key": "shift+cmd+,",
+    "command": "aiSettings.action.openhidden",
+    "when": "!isSettingsPaneOpen && !terminalFocus"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "-aiSettings.action.openhidden",
+    "when": "!isSettingsPaneOpen"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.killEditor",
+    "when": "terminalEditorFocus  && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.terminal.killEditor",
+    "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\u001b\r"
+    },
+    "when": "terminalFocus"
+  }
+]
