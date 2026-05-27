@@ -3,6 +3,7 @@
   lib,
   pwnvim,
   devbox,
+  unstablePkgs,
   config,
   ...
 }:
@@ -30,6 +31,7 @@
 
   programs.aerospace = {
     enable = true;
+    package = unstablePkgs.aerospace;
     userSettings = lib.importTOML ./dotfiles/aerospace.toml;
   };
 
@@ -93,14 +95,6 @@
     enable = true;
     enableZshIntegration = true;
     settings = lib.importTOML ./dotfiles/starship.toml;
-  };
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font.normal.family = "MesloLGS Nerd Font Mono";
-      font.size = 14;
-      general.import = [ pkgs.alacritty-theme.catppuccin_mocha ];
-    };
   };
 
   home.file = {

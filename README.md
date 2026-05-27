@@ -13,7 +13,7 @@ flake.nix                       # inputs + darwinConfigurations entry
 modules/
   darwin/default.nix            # system-level: defaults, fonts, homebrew (casks/brews)
   home-manager/
-    default.nix                 # user-level: packages, zsh, git, starship, alacritty, ...
+    default.nix                 # user-level: packages, zsh, git, starship, ...
     dotfiles/                   # config files imported via importTOML / readFile / source
       aerospace.toml
       starship.toml
