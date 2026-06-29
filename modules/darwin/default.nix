@@ -1,8 +1,11 @@
 { pkgs, lib, ... }:
+let
+  username = "zedang";
+in
 {
   # nix-darwin manages system-level programs and configuration
-  users.users.zedang.home = "/Users/zeked";
-  system.primaryUser = "zedang";
+  users.users.${username}.home = "/Users/${username}";
+  system.primaryUser = username;
   programs.zsh.enable = true;
   ids.gids.nixbld = 350;
   environment = {
@@ -86,7 +89,6 @@
       "raycast"
       "orbstack"
       "logi-options+"
-      "yaak"
       "mono-mdk"
       "ghostty"
       "obsidian"
