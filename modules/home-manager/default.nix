@@ -4,6 +4,7 @@
   pwnvim,
   devbox,
   unstablePkgs,
+  hostname,
   config,
   ...
 }:
@@ -74,7 +75,7 @@
       lsd = "eza --only-dirs --oneline";
       lsf = "eza --only-files --oneline";
       lsab = "eza --absolute=on --oneline";
-      nixswitch = "sudo darwin-rebuild switch --flake ~/config/.#";
+      nixswitch = "sudo darwin-rebuild switch --flake ~/config#${hostname}";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
       # git
       gst = "git status";

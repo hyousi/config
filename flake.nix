@@ -33,24 +33,26 @@
       devbox,
       ...
     }:
+    let
+      system = "aarch64-darwin";
+      hostname = import ./host.nix;
+    in
     {
-      darwinConfigurations."zedang-air" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-        };
+      darwinConfigurations.${hostname} = darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = { inherit hostname; };
+        pkgs = import nixpkgs { inherit system; };
         modules = [
           ./modules/darwin
+          { networking.hostName = hostname; }
           home-manager.darwinModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
-                inherit pwnvim devbox;
-                unstablePkgs = import nixpkgs-unstable {
-                  system = "aarch64-darwin";
-                };
+                inherit pwnvim devbox hostname;
+                unstablePkgs = import nixpkgs-unstable { inherit system; };
               };
               users.zedang = import ./modules/home-manager;
             };
