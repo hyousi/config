@@ -9,7 +9,7 @@
 }:
 {
   # home-manager manages user-level programs and configuration
-  home.homeDirectory = "/Users/zeked";
+  # home.homeDirectory 由 nix-darwin 的 users.users.<name>.home 自动提供
   # Don't change this when you change package input. Leave it alone.
   home.stateVersion = "24.11";
   # specify my home-manager configs
@@ -18,6 +18,7 @@
     fd # for finding files
     hyperfine
     curl # for downloading files
+    gh # GitHub CLI
     less # for pager
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
