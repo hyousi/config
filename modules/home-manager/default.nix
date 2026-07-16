@@ -113,6 +113,7 @@
     configFile."ghostty/config".text = ''
       font-family = "MesloLGS Nerd Font Mono"
       font-size = 14
+      shell-integration-features = true
     '';
   };
 }
