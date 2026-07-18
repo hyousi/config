@@ -50,6 +50,66 @@
   programs.git = {
     enable = true;
     maintenance.enable = true;
+    includes = [
+      {
+        condition = "gitdir:~/Developer/work/";
+        path = "~/Developer/work/.gitconfig";
+      }
+      {
+        condition = "gitdir:~/Developer/hobby/";
+        path = "~/Developer/hobby/.gitconfig";
+      }
+    ];
+    userName = "hyousi";
+    userEmail = "t0iiz@outlook.com";
+    extraConfig = {
+      column.ui = "auto";
+      branch = {
+        sort = "-committerdate";
+        autoSetupMerge = "simple";
+      };
+      tag.sort = "version:refname";
+      init.defaultBranch = "main";
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
+      };
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      help.autocorrect = "prompt";
+      commit.verbose = true;
+      rerere = {
+        enabled = true;
+        autoUpdate = true;
+      };
+      core = {
+        excludesFile = "~/.gitignore";
+        fsmonitor = true;
+      };
+      grep = {
+        lineNumber = true;
+        heading = true;
+        break = true;
+        patternType = "perl";
+      };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
+      merge.conflictStyle = "zdiff3";
+      pull.rebase = true;
+    };
   };
   programs.git-credential-oauth.enable = true;
   programs.zsh = {
@@ -109,7 +169,6 @@
 
   xdg = {
     enable = true;
-    configFile."git/config".source = ./dotfiles/.gitconfig;
     configFile."ghostty/config".text = ''
       font-family = "MesloLGS Nerd Font Mono"
       font-size = 14
