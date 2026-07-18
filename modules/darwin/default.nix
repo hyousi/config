@@ -1,6 +1,11 @@
 { pkgs, lib, ... }:
 let
   username = "zedang";
+  homebrewMirror = {
+    HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
+    HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
+    HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git";
+  };
 in
 {
   # nix-darwin manages system-level programs and configuration
@@ -20,7 +25,12 @@ in
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
+    variables = homebrewMirror;
   };
+  environment.etc."homebrew/brew.env".text =
+    lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (name: value: "${name}=\"${value}\"") homebrewMirror
+    ) + "\n";
   nix.settings = {
     experimental-features = [
       "nix-command"
@@ -75,9 +85,11 @@ in
     onActivation = {
       autoUpdate = false;
       upgrade = false;
-      cleanup = "uninstall";
+      # nix-darwin 25.05 emits deprecated `brew bundle --cleanup`; use
+      # `--force-cleanup` directly until the darwin input is bumped.
+      cleanup = "none";
+      extraFlags = [ "--force-cleanup" ];
     };
-    caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
     casks = [
