@@ -104,8 +104,8 @@ in
       "orbstack"
       "logi-options+"
       "mono-mdk"
-      "ghostty"
       "obsidian"
+      "otty"
     ];
     brews = [
       "trippy"

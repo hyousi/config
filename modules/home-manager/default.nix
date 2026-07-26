@@ -167,12 +167,15 @@
     };
   };
 
-  xdg = {
-    enable = true;
-    configFile."ghostty/config".text = ''
-      font-family = "MesloLGS Nerd Font Mono"
-      font-size = 14
-      shell-integration-features = true
-    '';
-  };
+  # otty manages its own config.toml at runtime (theme/font changes made in
+  # the GUI get written back to this file), so we only seed it once instead
+  # of symlinking it read-only into the nix store.
+  home.activation.seedOttyConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ottyConfig="$HOME/.config/otty/config.toml"
+    if [ ! -e "$ottyConfig" ]; then
+      run mkdir -p "$HOME/.config/otty"
+      run cp ${./dotfiles/otty/config.toml} "$ottyConfig"
+      run chmod u+w "$ottyConfig"
+    fi
+  '';
 }

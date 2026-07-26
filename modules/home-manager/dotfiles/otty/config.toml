@@ -1,0 +1,118 @@
+
+theme = "Glass Dark"
+theme-dark = "Nord"
+foreground = "#f7f8ff"
+background = "#40434b"
+palette-0 = "#252a35"
+# palette-1 = "#f38ba8" (reset to default)
+# palette-2 = "#a6e3a1" (reset to default)
+# palette-3 = "#f9e2af" (reset to default)
+# palette-4 = "#89b4fa" (reset to default)
+# palette-5 = "#f5c2e7" (reset to default)
+# palette-6 = "#94e2d5" (reset to default)
+# palette-7 = "#bac2de" (reset to default)
+# palette-8 = "#585b70" (reset to default)
+# palette-9 = "#f38ba8" (reset to default)
+# palette-10 = "#a6e3a1" (reset to default)
+# palette-11 = "#f9e2af" (reset to default)
+# palette-12 = "#89b4fa" (reset to default)
+# palette-13 = "#f5c2e7" (reset to default)
+# palette-14 = "#94e2d5" (reset to default)
+# palette-15 = "#ebebe6" (reset to default)
+
+# palette-15 = "#ebebe6" (reset to default)
+
+# palette-15 = "#a6adc8" (reset to default)
+
+# palette-1 = "#ea6c73" (reset to default)
+# palette-2 = "#91b362" (reset to default)
+# palette-3 = "#f9af4f" (reset to default)
+# palette-4 = "#53bdfa" (reset to default)
+# palette-5 = "#fae994" (reset to default)
+# palette-6 = "#90e1c6" (reset to default)
+# palette-7 = "#c7c7c7" (reset to default)
+# palette-8 = "#686868" (reset to default)
+# palette-9 = "#f07178" (reset to default)
+# palette-10 = "#c2d94c" (reset to default)
+# palette-11 = "#ffb454" (reset to default)
+# palette-12 = "#59c2ff" (reset to default)
+# palette-13 = "#ffee99" (reset to default)
+# palette-14 = "#95e6cb" (reset to default)
+# palette-15 = "#a6adc8" (reset to default)
+
+# palette-15 = "#e0def4" (reset to default)
+
+# selection-foreground = "#fdfff1" (reset to default)
+# selection-background = "#57584f" (reset to default)
+# cursor-color = "#c0c1b5" (reset to default)
+# cursor-text = "#8d8e82" (reset to default)
+
+# selection-foreground = "#2f2b2c" (reset to default)
+# selection-background = "#dedede" (reset to default)
+# cursor-color = "#dedede" (reset to default)
+# cursor-text = "#2f2b2c" (reset to default)
+
+# font-blending = "linear" (reset to default)
+# palette-15 = "#c0caf5" (reset to default)
+# selection-foreground = "#2e3440" (reset to default)
+# selection-background = "#e5e9f0" (reset to default)
+# cursor-color = "#e5e9f0" (reset to default)
+# cursor-text = "#2e3440" (reset to default)
+
+# palette-15 = "#c0caf5" (reset to default)
+
+# font-blending = "linear" (reset to default)
+# selection-foreground = "#2e3440" (reset to default)
+# selection-background = "#e5e9f0" (reset to default)
+# cursor-color = "#e5e9f0" (reset to default)
+# cursor-text = "#2e3440" (reset to default)
+
+# selection-background = "#e5e9f0" (reset to default)
+# cursor-color = "#e5e9f0" (reset to default)
+
+# font-blending = "linear" (reset to default)
+# palette-15 = "#cdcdcd" (reset to default)
+# selection-foreground = "#2e3440" (reset to default)
+# cursor-text = "#2e3440" (reset to default)
+
+font-family = "Berkeley Mono"
+
+details-panel-width = 369
+
+language = "english"
+
+# selection-background = "#ad95e9" (reset to default)
+# cursor-color = "#303030" (reset to default)
+
+# selection-foreground = "#fafaff" (reset to default)
+# cursor-text = "#565656" (reset to default)
+
+# palette-15 = "#ebebe6" (reset to default)
+
+palette-1 = "#ff8a8a"
+palette-2 = "#a8d46f"
+palette-3 = "#e8c778"
+palette-4 = "#8db7ff"
+palette-5 = "#d1a3ff"
+palette-6 = "#7fd6c2"
+palette-7 = "#e3e6f0"
+palette-8 = "#747b8e"
+palette-9 = "#ffb0a8"
+palette-10 = "#c8ea90"
+palette-11 = "#f2da9a"
+palette-12 = "#b2ccff"
+palette-13 = "#e0c2ff"
+palette-14 = "#a3e6d8"
+# selection-background = "#bbc9ed" (reset to default)
+# cursor-color = "#f7f8ff" (reset to default)
+
+# palette-15 = "#c0caf5" (reset to default)
+
+selection-background = "#bbc9ed"
+cursor-color = "#f7f8ff"
+
+# privilege-badge-agent-processing = false (reset to default)
+
+notification-sound = ["finish", "error"]
+
+# dock-icon-error-badge = false (reset to default)
