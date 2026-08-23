@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 let
   username = "zedang";
+  # Login shortname is "zedang" but this account's actual home directory is
+  # /Users/zeked (predates this config) — don't derive it from username.
+  homeDirectory = "/Users/zeked";
   homebrewMirror = {
     HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
     HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
@@ -9,7 +12,7 @@ let
 in
 {
   # nix-darwin manages system-level programs and configuration
-  users.users.${username}.home = "/Users/${username}";
+  users.users.${username}.home = homeDirectory;
   system.primaryUser = username;
   programs.zsh.enable = true;
   ids.gids.nixbld = 350;
