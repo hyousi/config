@@ -4,7 +4,7 @@ let
   homebrewMirror = {
     HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
     HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
-    HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git";
+    # Do not mirror brew.git — tuna snapshot lags and breaks new cask DSL (e.g. command_wrapper).
   };
 in
 {
@@ -29,7 +29,7 @@ in
   };
   environment.etc."homebrew/brew.env".text =
     lib.concatStringsSep "\n" (
-      lib.mapAttrsToList (name: value: "${name}=\"${value}\"") homebrewMirror
+      lib.mapAttrsToList (name: value: "${name}=${value}") homebrewMirror
     ) + "\n";
   nix.settings = {
     experimental-features = [
@@ -38,8 +38,8 @@ in
     ];
     sandbox = false;
     substituters = lib.mkForce [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
     trusted-public-keys = lib.mkForce [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="

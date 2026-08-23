@@ -3,4 +3,4 @@
 # Check on the command line: scutil --get LocalHostName
 # Used by flake.nix as darwinConfigurations.<name> and networking.hostName.
 # Optional: git update-index --skip-worktree host.nix  (avoid pushing this change)
-"zed-mini"
+"zedang-air"
