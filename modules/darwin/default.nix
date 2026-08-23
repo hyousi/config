@@ -110,6 +110,7 @@ in
     brews = [
       "trippy"
       "cloudflared"
+      "pi-coding-agent"
     ];
   };
 }
