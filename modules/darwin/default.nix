@@ -109,6 +109,7 @@ in
       "mono-mdk"
       "obsidian"
       "otty"
+      "stats"
     ];
     brews = [
       "trippy"
