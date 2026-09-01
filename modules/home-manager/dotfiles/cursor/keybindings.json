@@ -49,8 +49,17 @@
     "command": "editor.action.goToTypeDefinition"
   },
   {
-    "key": "alt+\\",
+    "key": "alt+cmd+right",
     "command": "workbench.action.positionPanelRight"
+  },
+  {
+    "key": "alt+cmd+down",
+    "command": "workbench.action.positionPanelBottom"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
   },
   {
     "key": "cmd+[",
