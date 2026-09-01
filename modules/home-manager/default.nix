@@ -111,9 +111,16 @@
       };
       merge.conflictStyle = "zdiff3";
       pull.rebase = true;
+      format.pretty = "oneline";
+      log.abbrevCommit = true;
     };
   };
   programs.git-credential-oauth.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -138,6 +145,7 @@
       lsf = "eza --only-files --oneline";
       lsab = "eza --absolute=on --oneline";
       nixswitch = "sudo darwin-rebuild switch --flake ~/config#${hostname}";
+      agent = "cursor-agent";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
       # git
       gst = "git status";
