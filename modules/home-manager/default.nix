@@ -146,6 +146,7 @@
       lsab = "eza --absolute=on --oneline";
       nixswitch = "sudo darwin-rebuild switch --flake ~/config#${hostname}";
       agent = "cursor-agent";
+      cc = "claude --dangerously-skip-permissions";
       nixup = "pushd ~/config; nix flake update; nixswitch; popd";
       # git
       gst = "git status";

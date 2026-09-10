@@ -57,19 +57,17 @@ in
     };
     options = "--delete-older-than 30d";
   };
-  nix.optimise = {
-    automatic = true;
-    interval = {
-      Weekday = 0;
-      Hour = 4;
-      Minute = 0;
-    };
-  };
+  # Disabled: suspected of racing with concurrent builds and cross-linking
+  # unrelated store paths via hardlink dedup, causing content corruption
+  # (observed 2026-09-07 — multiple unrelated store files silently overwritten
+  # with the same unrelated text). Re-enable only after confirming root cause.
+  nix.optimise.automatic = false;
   fonts = {
     packages = with pkgs; [
       nerd-fonts.meslo-lg
     ];
   };
+  security.pam.services.sudo_local.touchIdAuth = true;
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
   system.defaults = {
