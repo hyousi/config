@@ -23,6 +23,7 @@
     pwnvim.packages."aarch64-darwin".default # for vim
     devbox.packages."aarch64-darwin".default # for devbox
     nodejs # current active LTS
+    glow # markdown renderer
   ] ++ [
     # unstable: stable 25.05 ships gh 2.72.0 which queries deprecated projectCards
     unstablePkgs.gh
