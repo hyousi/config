@@ -97,7 +97,7 @@ in
       "betterdisplay"
       "cleanshot"
       "pixelsnap"
-      "claude-code"
+      "claude-code@latest"
       "cursor"
       "cursor-cli"
       "jordanbaird-ice"
@@ -107,12 +107,12 @@ in
       "mono-mdk"
       "obsidian"
       "otty"
-      "stats"
     ];
     brews = [
       "trippy"
       "cloudflared"
       "pi-coding-agent"
+      "mole"
     ];
   };
 }
