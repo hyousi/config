@@ -8,6 +8,24 @@
   config,
   ...
 }:
+let
+  # TUI for a running rclone job, read from its --rc interface. Pure stdlib, so
+  # it only needs the interpreter on the shebang — no PATH wrapping.
+  rstat = pkgs.writeScriptBin "rstat" ''
+    #!${pkgs.python3}/bin/python3
+    ${builtins.readFile ./dotfiles/rstat.py}
+  '';
+  # `rclone copy` preset for pushing media to 189 through OpenList's WebDAV,
+  # with the --rc interface on so rstat can read its progress.
+  rsync189 = pkgs.writeShellApplication {
+    name = "rsync189";
+    runtimeInputs = [
+      pkgs.rclone
+      pkgs.coreutils
+    ];
+    text = builtins.readFile ./dotfiles/rsync189.sh;
+  };
+in
 {
   # home-manager manages user-level programs and configuration
   # home.homeDirectory 由 nix-darwin 的 users.users.<name>.home 自动提供
@@ -25,6 +43,9 @@
     nodejs # current active LTS
     glow # markdown renderer
     caddy # web server / reverse proxy
+    rclone # sync local media to cloud storage over WebDAV
+    rstat # progress TUI for the rclone job above
+    rsync189 # rclone copy preset: local dir -> 189 via OpenList WebDAV
   ] ++ [
     # unstable: stable 25.05 ships gh 2.72.0 which queries deprecated projectCards
     unstablePkgs.gh
